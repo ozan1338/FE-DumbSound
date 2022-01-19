@@ -1,0 +1,81 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  background-color: #161616;
+  width: 30rem;
+  height: auto;
+  padding: 2rem;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  animation: modalAnimate 0.5s linear;
+  color: #fff;
+}
+
+@keyframes modalAnimate {
+  0% {
+    opacity: 0;
+    transform: translateY(-10rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form input[type="text"],
+input[type="password"],
+select {
+  border: 2px solid #d2d2d2;
+  background-color: rgba(210, 210, 210, 0.25);
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #b1b1b1;
+  height: 50px;
+  padding: 0 20px;
+  margin: 10px 0px;
+}
+
+form button {
+  background-color: #ee4622;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 10px;
+}
+
+.form-link {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form span {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #b1b1b1;
+}
+
+span strong {
+  color: #b1b1b1;
+  cursor: pointer;
+}

@@ -1,0 +1,145 @@
+.list-trans-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-trans-body-header {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+.list-trans-body-header h1 {
+  color: #fff;
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.Table {
+  width: 100%;
+  background-color: #3a3a3a;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #2b2b2b;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.Table td,
+.Table th {
+  text-align: start;
+  height: 50px;
+  padding: 8px;
+}
+
+.Table thead tr{
+  background-color: #2b2b2b!important;
+  color: #ee4622;
+  border-top: none !important;
+}
+
+.Table tr:nth-child(odd){
+  background-color: #3A3A3A
+}
+
+.Table tr:nth-child(even){
+  background-color: #2b2b2b
+}
+
+
+.Table td {
+  color: #fff;
+}
+
+.Table tr {
+  border-top: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: #fff;
+}
+
+.Table-container {
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-green {
+  color: #0acf83 !important;
+}
+
+.text-red {
+  color: #ff0742 !important;
+}
+
+.text-yellow {
+  color: #f7941e !important;
+}
+
+.menu-trans-list {
+  position: absolute;
+  right: 200px;
+  padding: 5px 10px;
+  background: #3a3a3a;
+  border-radius: 10px;
+  transition: 0.5s;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2),
+    2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1;
+  animation: dropdownAnimate 0.5s linear;
+}
+
+@keyframes dropdownAnimate {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-trans-list ul li {
+  list-style: none;
+  padding: 5px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.menu-trans-list ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-trans-list ul li,
+.menu-trans-list ul li {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.menu-trans-list ul li {
+  cursor: pointer;
+}
+
+.menu-trans-list::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 8px;
+  background-color: #3a3a3a;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}

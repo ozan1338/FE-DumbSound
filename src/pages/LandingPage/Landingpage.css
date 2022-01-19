@@ -1,0 +1,111 @@
+.header {
+    width: 100%;
+    height: 512px;
+}
+
+
+.text-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    height: 450px;
+    flex-direction: column;
+}
+
+.text-header h1{
+    font-size: 45px;
+    line-height: 55px;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.text-header p{
+    font-size: 24px;
+    line-height: 29px;
+    width: 63%;
+    text-align: center;
+}
+
+.body{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1c1c;
+}
+
+.body h1{
+    margin-top: 25px;
+    margin-bottom: 79px;
+    color: #EE4622;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 700;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+  align-items: center;
+  justify-content: center;
+}
+
+.column-6 {
+    width: 14.28%;
+    margin: 10px 8px;
+    background-color: #3A3A3A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.column-6 img{
+    min-width: 165px;
+    min-height: 152px;
+    max-height: 152px;
+    max-width: 165px;
+}
+.detail{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.detail-name, .detail-year{
+    color: #fff;
+}
+
+.detail-name{
+    margin: 10px 0px;
+}
+
+.detail-name h3{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.detail-name p{
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 10px
+}
+
+.detail-year {
+    margin: 13px 0;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    font-style: normal;
+}

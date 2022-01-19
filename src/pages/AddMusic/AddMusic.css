@@ -1,0 +1,39 @@
+.add-music-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-music-form {
+  width: 80%;
+}
+
+.add-music-input-title-thumbnail{
+    width: 100%;
+    display: flex;
+}
+
+.add-music-input-title-thumbnail label{
+    background-color: rgba(210, 210, 210, 0.25);
+    color: #b1b1b1;
+    margin-left: 10px;
+    width: 30%;
+}
+
+.add-music-form .label label{
+    background-color: rgba(210, 210, 210, 0.25);
+    color: #b1b1b1;
+    width: 20%;
+}
+
+.add-music-form .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-music-form .button button{
+    width: 40%;
+    background-color: #F58033;
+}
