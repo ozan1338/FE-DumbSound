@@ -1,45 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./ListTrans.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import {useDispatch,useSelector} from "react-redux"
+import { getAllPayment,updatePaymentStatus } from "../../action/paymentAction";
 
 export default function ListTrans() {
+  const dispatch = useDispatch()
+
+  const paymentState = useSelector(state=>state.getAllPaymentReducer)
+  const {payments} = paymentState
+
   const [menuToggle, setMenuToggle] = useState(false);
 
-  const data = [
-    {
-      id: 1,
-      user: "Ozan",
-      BuktiTransfer: "bca.jpg",
-      remainigActive: 26,
-      StatusUser: "Active",
-      StatusPayment: "Approve",
-    },
-    {
-      id: 2,
-      user: "Ozan",
-      BuktiTransfer: "bca.jpg",
-      remainigActive: 26,
-      StatusUser: "Non Active",
-      StatusPayment: "Cancel",
-    },
-    {
-      id: 3,
-      user: "Ozan",
-      BuktiTransfer: "bca.jpg",
-      remainigActive: 26,
-      StatusUser: "Active",
-      StatusPayment: "Pending",
-    },
-    {
-      id: 4,
-      user: "Ozan",
-      BuktiTransfer: "bca.jpg",
-      remainigActive: 26,
-      StatusUser: "Active",
-      StatusPayment: "Approve",
-    },
-  ];
+  useEffect(()=>{
+    dispatch(getAllPayment())
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <>
@@ -63,32 +41,32 @@ export default function ListTrans() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((item) => {
+                {payments?.map((item,index) => {
                   return (
-                    <tr key={item.id}>
-                      <td>{item.id}</td>
-                      <td>{item.user}</td>
-                      <td>{item.BuktiTransfer}</td>
-                      <td>{item.remainigActive}/Hari</td>
+                    <tr key={index}>
+                      <td>{index+1}</td>
+                      <td>{item.user.fullname}</td>
+                      <td>{}</td>
+                      <td>26/Hari</td>
                       <td
                         className={
-                          item.StatusUser === "Active"
+                          item.user.subscribe === "True"
                             ? "text-green"
                             : "text-red"
                         }
                       >
-                        {item.StatusUser}
+                        {item.user.subscribe === "True" ? "Active" : "Non Active"}
                       </td>
                       <td
                         className={
-                          item.StatusPayment === "Active"
+                          item.status === "Approve"
                             ? "text-green"
-                            : item.StatusPayment === "Pending"
+                            : item.status === "pending"
                             ? "text-yellow"
                             : "text-red"
                         }
                       >
-                        {item.StatusPayment}
+                        {item.status}
                       </td>
                       <td
                         onClick={() =>
@@ -101,10 +79,10 @@ export default function ListTrans() {
                       {menuToggle === item.id ? (
                           <div className="menu-trans-list">
                             <ul>
-                                <li className="text-green">
+                                <li className="text-green" onClick={()=>{dispatch(updatePaymentStatus(menuToggle,"Approve"))}}>
                                     Approve
                                 </li>
-                                <li className="text-red">
+                                <li className="text-red" onClick={()=>{dispatch(updatePaymentStatus(menuToggle,"cancel"))}}>
                                     Cancel
                                 </li>
                             </ul>

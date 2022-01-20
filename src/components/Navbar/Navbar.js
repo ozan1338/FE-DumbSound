@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import { logoutUser } from "../../action/userAction";
 
 export default function Navbar() {
-  const login = true;
+  
+  const loginState = useSelector((state) => state.loginReducer);
+  const { login } = loginState;
+  
+
+  const status = JSON.parse(localStorage.getItem("status"))
+
+
   const [menuToggle, setMenuToggle] = useState(false);
   const dispatch = useDispatch();
-  const status = 1;
 
   return (
     <div className="navbar">
@@ -82,7 +89,7 @@ export default function Navbar() {
                       alt="icon"
                       src={process.env.PUBLIC_URL + "/assets/images/logout-1.svg"}
                     />
-                    <p
+                    <p onClick={()=>{dispatch(logoutUser())}}
                     >
                       Logout
                     </p>

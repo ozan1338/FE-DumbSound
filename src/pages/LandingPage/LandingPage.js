@@ -1,92 +1,33 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./Landingpage.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import "react-jinke-music-player/assets/index.css";
+import { getAllMusic } from "../../action/musicAction";
+import Loading from "../../components/Loading/Loading"
 
 export default function LandingPage() {
   const openState = useSelector((state) => state.modalReducer);
   const { openLogin, openRegister } = openState;
 
+  const dispatch = useDispatch()
+
   const [showMusic, setShowMusic] = useState(false);
 
-  const data = [
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-    {
-      img: process.env.PUBLIC_URL + "/assets/images/Rectangle-4.png",
-      nama: "Circles",
-      artis: "Post Malone",
-      year: "2019",
-    },
-  ];
+  const musicState = useSelector((state)=>state.getAllMusicReducer)
+  const {musics,loading} = musicState
+
+  const loginState = useSelector(state=>state.loginReducer)
+  const {login} = loginState
+
+  useEffect(()=>{
+    dispatch(getAllMusic())
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <>
@@ -112,20 +53,20 @@ export default function LandingPage() {
       <div className="body">
         <h1>Dengarkan Dan Rasakan</h1>
         <div className="row">
-          {data.map((item, index) => {
+          {loading ? <Loading /> : musics.map((item, index) => {
             return (
               <div
                 onClick={() => {
-                  setShowMusic(true);
+                  login ? setShowMusic(true) : dispatch({type: "OPEN_LOGIN"});
                 }}
                 key={index}
                 className="column-6"
               >
-                <img alt="thumbnail-1" src={item.img} />
+                <img alt="thumbnail-1" src={item.thumbnail} />
                 <div className="detail">
                   <div className="detail-name">
-                    <h3>{item.nama}</h3>
-                    <p>{item.artis}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.artist?.name}</p>
                   </div>
                   <div className="detail-year">
                     <p>{item.year}</p>
