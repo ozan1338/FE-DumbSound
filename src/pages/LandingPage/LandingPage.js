@@ -10,15 +10,26 @@ import { getAllMusic } from "../../action/musicAction";
 import Loading from "../../components/Loading/Loading"
 
 export default function LandingPage() {
+  document.title = "DUMBSOUND | HOME"
+
   const openState = useSelector((state) => state.modalReducer);
   const { openLogin, openRegister } = openState;
 
   const dispatch = useDispatch()
 
-  const [showMusic, setShowMusic] = useState(false);
+  const [showMusic, setShowMusic] = useState([]);
 
   const musicState = useSelector((state)=>state.getAllMusicReducer)
   const {musics,loading} = musicState
+
+  const audio = musics?.map(item => {
+    return ({
+      cover: item.thumbnail,
+      musicSrc: item.attache,
+      name: item.title,
+      singer: item.artist?.name
+    }
+    )})
 
   const loginState = useSelector(state=>state.loginReducer)
   const {login} = loginState
@@ -57,7 +68,7 @@ export default function LandingPage() {
             return (
               <div
                 onClick={() => {
-                  login ? setShowMusic(true) : dispatch({type: "OPEN_LOGIN"});
+                  login ? setShowMusic(index) : dispatch({type: "OPEN_LOGIN"});
                 }}
                 key={index}
                 className="column-6"
@@ -76,14 +87,15 @@ export default function LandingPage() {
             );
           })}
         </div>
-        {showMusic ? (
+        {showMusic.length !== 0 ? (
           <ReactJkMusicPlayer
+            audioLists={audio}
             toggleMode={false}
             mode="full"
             showReload={false}
             showThemeSwitch={false}
             showDownload={false}
-            audioLists={false}
+            playIndex={showMusic}
           />
         ) : null}
       </div>

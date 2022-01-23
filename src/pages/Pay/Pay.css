@@ -58,6 +58,9 @@ label {
   line-height: 25px;
   padding: 6px;
   padding-left: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .body-pay form button{

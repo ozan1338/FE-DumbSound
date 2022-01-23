@@ -27,6 +27,10 @@
     width: 20%;
 }
 
+#selectSinger{
+    margin: 20px 0;
+}
+
 .add-music-form .button{
     display: flex;
     justify-content: center;

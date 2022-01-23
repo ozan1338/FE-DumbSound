@@ -9,6 +9,8 @@ import { addPayment } from "../../action/paymentAction";
 
 export default function Pay() {
 
+  document.title = "DUMBSOUND | PAY"
+
   const dispatch = useDispatch()
 
   const [form,setForm] = useState(null)
@@ -50,7 +52,7 @@ export default function Pay() {
           </p>
           <form onSubmit={handleSubmit}>
               <input type="text" placeholder="Input Your Account Number" name="" />
-              <label  htmlFor="attache" >Attache Proof of Transfer</label>
+              <label  htmlFor="attache" >Attache Proof of Transfer <img alt="attache-1" src={process.env.PUBLIC_URL + "/assets/images/attache-1.png"} /></label>
               <input onChange={handleChange} id="attache" type="file" name="attache" />
               <button type="submit">{loading ? <Loading /> : "Send" }</button>
           </form>

@@ -55,7 +55,8 @@ export default function Register() {
             <input onChange={(event)=>{setEmail(event.target.value)}} name='email' type="text" placeholder="Email" required />
             <input onChange={(event)=>{setPassword(event.target.value)}} name='password' type="password" placeholder="Password" required />
             <input onChange={(event)=>{setFullName(event.target.value)}} name='fullname' type="text" placeholder="Full Name" required />
-            <select onChange={(event)=>{setGender(event.target.value)}}  name='gender'>
+            <select onChange={(event)=>{setGender(event.target.value)}} defaultValue={'default'}  name='gender'>
+                <option value="default" disabled  hidden>Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>

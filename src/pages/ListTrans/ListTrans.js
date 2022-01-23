@@ -6,12 +6,21 @@ import {useDispatch,useSelector} from "react-redux"
 import { getAllPayment,updatePaymentStatus } from "../../action/paymentAction";
 
 export default function ListTrans() {
+  document.title = "DUMBSOUND | LIST TRANSACTION"
+
   const dispatch = useDispatch()
 
   const paymentState = useSelector(state=>state.getAllPaymentReducer)
   const {payments} = paymentState
 
   const [menuToggle, setMenuToggle] = useState(false);
+  
+  const calcDiffTime = (start,end) => {
+    const diffTime = Math.abs(new Date(end) - new Date(start))
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return diffDays
+  }
+
 
   useEffect(()=>{
     dispatch(getAllPayment())
@@ -46,8 +55,8 @@ export default function ListTrans() {
                     <tr key={index}>
                       <td>{index+1}</td>
                       <td>{item.user.fullname}</td>
-                      <td>{}</td>
-                      <td>26/Hari</td>
+                      <td>{item.attache}</td>
+                      <td>{calcDiffTime(new Date(), item.dueDate)}/Hari</td>
                       <td
                         className={
                           item.user.subscribe === "True"

@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-brand">
-        <Link to="/">
+        <Link to={status ? "/list-trans" : "/"}>
           <img
             alt="icon"
             src={process.env.PUBLIC_URL + "/assets/images/Group.svg"}

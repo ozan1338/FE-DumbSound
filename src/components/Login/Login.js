@@ -32,6 +32,7 @@ export default function Login() {
 
     }
 
+
   return (
     <div className="modal" onClick={close}>
       <div className="modal-body">
@@ -40,7 +41,7 @@ export default function Login() {
           <div className="form-heading">
             <h3>LOGIN</h3>
           </div>
-          <input onChange={(event)=>{setEmail(event.target.value)}} type="text" placeholder="Email" required />
+          <input onChange={(event)=>{setEmail(event.target.value)}} type="text" placeholder="Email" required />  
           <input onChange={(event)=>{setPassword(event.target.value)}} type="password" placeholder="Password" required />
           <button type="submit">{loading ? <Loading /> : "Login"}</button>
           <div className="form-link">

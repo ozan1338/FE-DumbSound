@@ -32,7 +32,8 @@
 
 form input[type="text"],
 input[type="password"],
-select {
+select,
+textarea {
   border: 2px solid #d2d2d2;
   background-color: rgba(210, 210, 210, 0.25);
   display: block;
@@ -46,6 +47,21 @@ select {
   height: 50px;
   padding: 0 20px;
   margin: 10px 0px;
+}
+
+input::placeholder{
+  color: #b1b1b1;
+}
+
+textarea::placeholder{
+  color: #b1b1b1;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+textarea{
+  padding: 10px 20px;
+  resize: none;
 }
 
 form button {

@@ -9,6 +9,8 @@ import { addArtist } from '../../action/artistAction'
 
 export default function AddArtist() {
 
+    document.title = "DUMBSOUND | ADD ARTIST"
+
     const dispatch = useDispatch()
 
     const artistState = useSelector(state=>state.addArtistReducer)

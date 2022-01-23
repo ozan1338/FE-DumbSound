@@ -10,6 +10,8 @@ import AlertSuccess from "../../components/AlertSuccess/AlertSuccess"
 
 export default function AddMusic() {
 
+    document.title = "DUMBSOUND | ADD MUSIC"
+
     const dispatch = useDispatch()
 
     const artistState = useSelector(state=>state.getAllArtistReducer)
@@ -67,11 +69,12 @@ export default function AddMusic() {
                     <form onSubmit={handleSubmit} className='add-music-form'>
                         <div className='add-music-input-title-thumbnail'>
                             <input onChange={handleChange} name="title" type="text" placeholder='Title' />
-                            <label htmlFor='proofAttachment'>Attach Thumbnail</label>
+                            <label htmlFor='proofAttachment'>Attach Thumbnail <img alt="attache-1" src={process.env.PUBLIC_URL + "/assets/images/attache-2.png"} /></label>
                             <input onChange={handleChange} name='thumbnail' type="file" id='proofAttachment' />
                         </div>
                         <input onChange={handleChange} name='year' type="text" placeholder='Year' />
-                        <select onChange={handleChange}  name='artisId'>
+                        <select id="selectSinger" onChange={handleChange} defaultValue={'default'}  name='artisId'>
+                                    <option value="default" disabled hidden>Singer</option>
                             {artist?.map((item,index)=>{
                                 return(
                                     <option key={index} value={item.id}>{item.name}</option>
