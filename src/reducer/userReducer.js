@@ -8,7 +8,8 @@ export const loginReducer = (state={}, action) => {
             ...state,
             loading: false,
             login: true,
-            error: false
+            error: false,
+            payment: action.payload
         }
         case 'LOGIN_FAILED' : return {
             ...state,
@@ -18,7 +19,8 @@ export const loginReducer = (state={}, action) => {
         }
         case 'LOGOUT_SUCCESS' : return {
             ...state,
-            login: false
+            login: false,
+            payment: {}
         }
         default: return state
     }
@@ -38,6 +40,59 @@ export const registerUserReducer = (state={}, action) => {
             ...state,
             loading: false,
             error : action.payload
+        }
+        default: return state
+    }
+}
+
+export const addNotifReducer = (state={}, action) => {
+    switch(action.type){
+        case 'ADD_NOTIF_REQUEST':return {
+            ...state
+        }
+        case 'ADD_NOTIF_SUCCESS':return {
+            ...state,
+            status: true
+        }
+        case 'ADD_NOTIF_FAILED':return {
+            ...state,
+            status: false
+        }
+        default: return state
+    }
+}
+
+export const updateNotifReducer = (state={}, action) => {
+    switch(action.type){
+        case 'UPDATE_NOTIF_REQUEST':return {
+            ...state
+        }
+        case 'UPDATE_NOTIF_SUCCESS':return {
+            ...state,
+            status: true
+        }
+        case 'UPDATE_NOTIF_FAILED':return {
+            ...state,
+            status: false
+        }
+        default: return state
+    }
+}
+
+export const getNotifReducer = (state={}, action) => {
+    switch(action.type){
+        case 'GET_NOTIF_REQUEST':return {
+            ...state
+        }
+        case 'GET_NOTIF_SUCCESS':return {
+            ...state,
+            statusNotif: action.payload.status,
+            msg: action.payload.message
+        }
+        case 'GET_NOTIF_FAILED':return {
+            ...state,
+            statusNotif: false,
+
         }
         default: return state
     }

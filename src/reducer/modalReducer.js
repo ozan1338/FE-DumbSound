@@ -8,7 +8,7 @@ export const modalReducer = (state={}, action) => {
         case 'OPEN_REGISTER' : return {
             ...state,
             openLogin: false,
-            openRegister: true
+            openRegister: true,
         }
         case 'CLOSE_MODAL' : return {
             ...state,
@@ -19,15 +19,27 @@ export const modalReducer = (state={}, action) => {
             ...state,
             openAlertError : true,
             openAlertSuccess : false,
+            openAlertInfo: false,
         }
         case 'CLOSE_ALERT_ERROR' : return {
             ...state,
             openAlertError : false
         }
+        case 'OPEN_ALERT_INFO' : return {
+            ...state,
+            openAlertError : false,
+            openAlertSuccess : false,
+            openAlertInfo : true,
+        }
+        case 'CLOSE_ALERT_INFO' : return {
+            ...state,
+            openAlertInfo : false
+        }
         case 'OPEN_ALERT_SUCCESS' : return {
             ...state,
             openAlertSuccess : true,
-            openAlertError : false
+            openAlertError : false,
+            openAlertInfo: false
         }
         case 'CLOSE_ALERT_SUCCESS' : return {
             ...state,

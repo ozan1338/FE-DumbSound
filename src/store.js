@@ -2,7 +2,7 @@ import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import {modalReducer} from "../src/reducer/modalReducer"
-import { loginReducer,registerUserReducer } from "./reducer/userReducer";
+import { loginReducer,registerUserReducer,addNotifReducer,updateNotifReducer,getNotifReducer } from "./reducer/userReducer";
 import { getAllMusicReducer, addMusicReducer } from "./reducer/musicReducer";
 import { addPaymentReducer,getAllPaymentReducer,updateStatusPaymentReducer } from "./reducer/paymentReducer";
 import { addArtistReducer, getAllArtistReducer } from "./reducer/artistReducer";
@@ -17,7 +17,10 @@ const finalreducer = combineReducers({
     updateStatusPaymentReducer,
     addArtistReducer,
     getAllArtistReducer,
-    addMusicReducer
+    addMusicReducer,
+    addNotifReducer,
+    getNotifReducer,
+    updateNotifReducer
 })
 
 const currenUser = localStorage.getItem('currentUser') ? {login : true} : {};

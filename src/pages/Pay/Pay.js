@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import "./Pay.css";
 import AlertError from "../../components/AlertError/AlertError"
 import AlertSuccess from "../../components/AlertSuccess/AlertSuccess"
+import AlertInfo from "../../components/AlertInfo/AlertInfo"
 import Loading from "../../components/Loading/Loading"
 import {useDispatch,useSelector} from "react-redux"
 import { addPayment } from "../../action/paymentAction";
@@ -16,7 +17,7 @@ export default function Pay() {
   const [form,setForm] = useState(null)
 
   const paymentState = useSelector(state=>state.addPaymentReducer)
-  const {loading,error} = paymentState
+  const {loading,error,msg} = paymentState
 
   const handleChange = (event) => {
     setForm(event.target.files)
@@ -31,7 +32,7 @@ export default function Pay() {
       dispatch({type: "OPEN_ALERT_ERROR"})
     }else{
       const formData = new FormData()
-      console.log(form);
+      //console.log(form);
       formData.set("attache", form[0], form[0].name)
 
       dispatch(addPayment(formData))
@@ -43,7 +44,7 @@ export default function Pay() {
       <div className="container">
         <Navbar />
         <div className="body-pay">
-          {error ? <AlertError message={error} />: <AlertSuccess message="Payment Success" />}
+          {error ? <AlertError message={error} />: msg ? <AlertInfo message={msg} /> : <AlertSuccess message="Payment Success... Please Wait Untill Admin Approve" />}
           <h1>Premium</h1>
           <p>
             Bayar sekarang dan nikmati streaming music yang kekinian dari{" "}

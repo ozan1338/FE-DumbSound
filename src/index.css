@@ -27,3 +27,15 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.react-jinke-music-player-main .music-player-panel .panel-content .rc-slider-handle, .react-jinke-music-player-main .music-player-panel .panel-content .rc-slider-track{
+  background-color: #ee4622 !important;
+}
+
+.react-jinke-music-player-main svg:active, .react-jinke-music-player-main svg:hover {
+  color: #ee4622 !important;
+}
+
+.Toastify__toast-body{
+  font-size: 16px;
+}

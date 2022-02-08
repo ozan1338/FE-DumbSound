@@ -9,16 +9,29 @@ export const addPayment = (data) => async(dispatch) => {
             }
         }
 
-        await API.post('/transaction', data, config)
+        const res = await API.post('/transaction', data, config)
 
-        dispatch({type: "OPEN_ALERT_SUCCESS"})
+        console.log(res);
 
-        setTimeout(()=>{
-            dispatch({type: "ADD_PAYMENT_SUCCESS"})
-        },700)
+        if(res.data.status === "approved"){
+            dispatch({type: "ADD_PAYMENT_INFO", payload: res.data.msg})
+            dispatch({type: "OPEN_ALERT_INFO"})
+        }else if(res.data.status === "pending"){
+            dispatch({type: "ADD_PAYMENT_INFO", payload: res.data.msg})
+            dispatch({type: "OPEN_ALERT_INFO"})
+        }else if(res.data.status === "cancel"){
+            dispatch({type: "ADD_PAYMENT_FAILED", payload: res.data.msg})
+            dispatch({type: "OPEN_ALERT_ERROR"})
+        }else{
+            dispatch({type: "OPEN_ALERT_SUCCESS"})
+    
+            setTimeout(()=>{
+                dispatch({type: "ADD_PAYMENT_SUCCESS"})
+            },700)
+        }
 
     } catch (error) {
-        dispatch({type: "ADD_PAYMENT_FAILED", payload: error.response.data.error.message})
+        dispatch({type: "ADD_PAYMENT_FAILED", payload: error.response.data.error?.message})
         dispatch({type: "OPEN_ALERT_ERROR"})
     }
 }

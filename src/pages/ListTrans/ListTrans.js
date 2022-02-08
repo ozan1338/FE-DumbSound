@@ -4,6 +4,7 @@ import "./ListTrans.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import {useDispatch,useSelector} from "react-redux"
 import { getAllPayment,updatePaymentStatus } from "../../action/paymentAction";
+import { updateNotif } from "../../action/userAction";
 
 export default function ListTrans() {
   document.title = "DUMBSOUND | LIST TRANSACTION"
@@ -21,6 +22,17 @@ export default function ListTrans() {
     return diffDays
   }
 
+  //console.log(payments)
+
+  const handleStatusAndNotifApprove = (userId) => {
+    dispatch(updatePaymentStatus(menuToggle,"Approve"))
+    dispatch(updateNotif(userId,"true","Payment Has Been Approve"))
+  }
+  
+  const handleStatusAndNotifCancel = (userId) => {
+    dispatch(updatePaymentStatus(menuToggle,"cancel"))
+    dispatch(updateNotif(userId,"true","Payment Has Been Canceled"))
+  }
 
   useEffect(()=>{
     dispatch(getAllPayment())
@@ -88,10 +100,10 @@ export default function ListTrans() {
                       {menuToggle === item.id ? (
                           <div className="menu-trans-list">
                             <ul>
-                                <li className="text-green" onClick={()=>{dispatch(updatePaymentStatus(menuToggle,"Approve"))}}>
+                                <li className="text-green" onClick={()=>{handleStatusAndNotifApprove(item.user.id)}}>
                                     Approve
                                 </li>
-                                <li className="text-red" onClick={()=>{dispatch(updatePaymentStatus(menuToggle,"cancel"))}}>
+                                <li className="text-red" onClick={()=>handleStatusAndNotifCancel(item.user.id)}>
                                     Cancel
                                 </li>
                             </ul>

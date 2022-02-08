@@ -6,6 +6,10 @@ export const addPaymentReducer = (state={}, action) => {
         case 'ADD_PAYMENT_SUCCESS' : return {
             loading:false
         }
+        case 'ADD_PAYMENT_INFO' : return {
+            loading:false,
+            msg: action.payload
+        }
         case 'ADD_PAYMENT_FAILED' : return {
             loading:false,
             error: action.payload
